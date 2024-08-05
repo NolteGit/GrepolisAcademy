@@ -10,7 +10,6 @@ const researchTopics = [
 
     // Level 7
     { id: 7, level: 7, name: "Spionage", description: "Ein abgeschickter Spion wird einen Bonus in Höhe von 20% zusätzlicher Silbermünzen erhalten.", cost: 3 },
-    { id: 8, level: 7, name: "Beute", description: "Bauerndörfer bieten dir eine Auswahl von acht anstatt vier Rohstoffangeboten an (nur beim alten Bauerndorfsystem).", cost: 3 },
     { id: 9, level: 7, name: "Loyalität der Dorfbewohner", description: "Bauerndörfer liefern nun 115% Ressis, verdoppeln allerdings auch die Abklingzeit (nur beim neuen Bauerndorfsystem).", cost: 6 },
     { id: 10, level: 7, name: "Keramik", description: "Dein Lager kann 2500 weitere Rohstoffe lagern.", cost: 4 },
 

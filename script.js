@@ -66,6 +66,11 @@ function updateResearchTopics(level) {
                 if (selectedResearch.includes(topic.id)) {
                     topicDiv.classList.add('selected');
                 }
+                const tooltip = document.createElement('span');
+                tooltip.classList.add('tooltip');
+                tooltip.textContent = topic.description;
+                topicDiv.appendChild(tooltip);
+
                 levelContainer.appendChild(topicDiv);
             }
         });

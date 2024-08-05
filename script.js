@@ -23,17 +23,32 @@ function updateResearchTopics(level) {
     }
     topicsContainer.innerHTML = '';
 
-    researchTopics.forEach(topic => {
-        if (topic.level <= level) {
-            const topicDiv = document.createElement('div');
-            topicDiv.classList.add('research-item');
-            topicDiv.innerHTML = `
-                ${topic.name} - Cost: ${topic.cost} points
-                <button onclick="selectResearch(${topic.id})">Select</button>
-            `;
-            topicsContainer.appendChild(topicDiv);
+    let currentLevel = 1;
+    while (currentLevel <= level) {
+        const levelContainer = document.createElement('div');
+        levelContainer.classList.add('level-container');
+
+        researchTopics.forEach(topic => {
+            if (topic.level === currentLevel) {
+                const topicDiv = document.createElement('div');
+                topicDiv.classList.add('research-item');
+                topicDiv.innerHTML = `
+                    ${topic.name} - Cost: ${topic.cost} points
+                    <button onclick="selectResearch(${topic.id})">Select</button>
+                `;
+                levelContainer.appendChild(topicDiv);
+            }
+        });
+
+        if (levelContainer.childElementCount > 0) {
+            const levelHeader = document.createElement('h3');
+            levelHeader.textContent = `Level ${currentLevel}`;
+            topicsContainer.appendChild(levelHeader);
+            topicsContainer.appendChild(levelContainer);
         }
-    });
+        
+        currentLevel += 3; // Move to the next level that unlocks new research topics
+    }
 }
 
 function selectResearch(id) {

@@ -24,18 +24,30 @@ function updateResearchTopics(level) {
     }
     topicsContainer.innerHTML = '';
 
-    researchTopics.forEach(topic => {
-        if (topic.level <= level) {
-            const topicDiv = document.createElement('div');
-            topicDiv.classList.add('research-item');
-            topicDiv.textContent = `${topic.name} (${topic.cost})`;
-            topicDiv.onclick = () => selectResearch(topic.id);
-            if (selectedResearch.includes(topic.id)) {
-                topicDiv.classList.add('selected');
+    let currentLevel = 1;
+    while (currentLevel <= level) {
+        const levelContainer = document.createElement('div');
+        levelContainer.classList.add('level-container');
+
+        researchTopics.forEach(topic => {
+            if (topic.level === currentLevel) {
+                const topicDiv = document.createElement('div');
+                topicDiv.classList.add('research-item');
+                topicDiv.textContent = `${topic.name} (${topic.cost})`;
+                topicDiv.onclick = () => selectResearch(topic.id);
+                if (selectedResearch.includes(topic.id)) {
+                    topicDiv.classList.add('selected');
+                }
+                levelContainer.appendChild(topicDiv);
             }
-            topicsContainer.appendChild(topicDiv);
+        });
+
+        if (levelContainer.childElementCount > 0) {
+            topicsContainer.appendChild(levelContainer);
         }
-    });
+        
+        currentLevel += 3; // Move to the next level that unlocks new research topics
+    }
 }
 
 function selectResearch(id) {

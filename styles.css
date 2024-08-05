@@ -55,13 +55,11 @@ button {
     padding: 5px;
     border-radius: 4px;
     text-align: center;
-    width: 150px;
+    cursor: pointer;
 }
 
-.research-item button {
-    margin-top: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
+.research-item.selected {
+    background-color: #a0d0a0;
 }
 
 .selected-research {

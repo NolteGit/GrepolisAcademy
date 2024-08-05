@@ -6,7 +6,6 @@ const researchTopics = [
 
     // Level 4
     { id: 4, level: 4, name: "Hoplit", description: "Ermöglicht die Ausbildung von Hopliten.", cost: 8 },
-    { id: 5, level: 4, name: "Diplomatie", description: "Bei Forderung oder Plünderung in einem Bauerndorf erhältst du 15% zusätzliche Ressourcen (nur beim alten Bauerndorfsystem).", cost: 3 },
     { id: 6, level: 4, name: "Meteorologie", description: "Alle in der Kaserne ausgebildeten Einheiten bewegen sich um 10% schneller.", cost: 4 },
 
     // Level 7

@@ -34,7 +34,6 @@ const researchTopics = [
     { id: 21, level: 19, name: "Brander", description: "Ermöglicht den Bau von Brandern.", cost: 8 },
     { id: 22, level: 19, name: "Katapult", description: "Ermöglicht den Bau von Katapulten.", cost: 8 },
     { id: 23, level: 19, name: "Kryptographie", description: "Wann immer deine Stadt Silbermünzen wegen eines feindlichen Spions verliert, verlierst du 10% weniger.", cost: 6 },
-    { id: 24, level: 19, name: "Demokratie", description: "Deine Bürger stehen hinter ihrem Anführer. Versucht jemand die Stadt zu übernehmen, so benötigt er 10% länger (auf bestimmten Welten nicht vorhanden).", cost: 6 },
 
     // Level 22
     { id: 25, level: 22, name: "Schnelles Transportboot", description: "Ermöglicht den Bau von schnellen Transportschiffen.", cost: 8 },

@@ -32,7 +32,7 @@ function updateResearchTopics(level) {
             if (topic.level === currentLevel) {
                 const topicDiv = document.createElement('div');
                 topicDiv.classList.add('research-item');
-                topicDiv.innerHTML = `${topic.name} (${topic.cost})`;
+                topicDiv.textContent = `${topic.name} (${topic.cost})`;
                 topicDiv.onclick = () => selectResearch(topic.id);
                 if (selectedResearch.includes(topic.id)) {
                     topicDiv.classList.add('selected');
@@ -63,4 +63,16 @@ function selectResearch(id) {
         selectedResearch = selectedResearch.filter(tid => tid !== id);
     }
 
-    document.getElementById('research-points').
+    document.getElementById('research-points').textContent = availableResearchPoints;
+    updateResearchTopics(parseInt(document.getElementById('academy-level').value));
+    updateSelectedResearch();
+}
+
+function updateSelectedResearch() {
+    const selectedResearchNames = selectedResearch.map(id => {
+        const topic = researchTopics.find(t => t.id === id);
+        return topic.name;
+    });
+
+    document.getElementById('selected-research').textContent = selectedResearchNames.join(', ') || 'None';
+}

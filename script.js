@@ -99,4 +99,15 @@ function selectResearch(id) {
 
 function updateSelectedResearch() {
     const selectedResearchNames = selectedResearch.map(id => {
-        const topic =
+        const topic = researchTopics.find(t => t.id === id);
+        return topic.name;
+    });
+
+    document.getElementById('selected-research').textContent = selectedResearchNames.join(', ') || 'None';
+}
+
+function resetAll() {
+    document.getElementById('academy-level').value = 1;
+    selectedResearch = [];
+    calculateResearchPoints();
+}

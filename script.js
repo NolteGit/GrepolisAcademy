@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('academy-level').addEventListener('input', calculateResearchPoints);
     calculateResearchPoints();
 });
 

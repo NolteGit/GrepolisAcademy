@@ -8,21 +8,23 @@
 </head>
 <body>
     <div class="container">
-        <h1>Grepolis Academy Simulator</h1>
-        <div class="controls">
-            <label for="academy-level">Academy Level:</label>
-            <input type="number" id="academy-level" value="1" min="1" max="37">
-            <button onclick="calculateResearchPoints()">Calculate Research Points</button>
-            <p>Total Research Points: <span id="research-points">0</span></p>
+        <div class="left-panel">
+            <h1>Grepolis Academy Simulator</h1>
+            <div class="controls">
+                <label for="academy-level">Academy Level:</label>
+                <input type="number" id="academy-level" value="1" min="1" max="37">
+                <button onclick="calculateResearchPoints()">Calculate Research Points</button>
+                <p>Total Research Points: <span id="research-points">0</span></p>
+            </div>
+            <div class="selected-research">
+                <h2>Selected Research</h2>
+                <p id="selected-research">None</p>
+            </div>
         </div>
-
-        <div class="research-grid">
-            <!-- Research topics will be dynamically inserted here -->
-        </div>
-        
-        <div class="selected-research">
-            <h2>Selected Research</h2>
-            <p id="selected-research">None</p>
+        <div class="right-panel">
+            <div class="research-grid">
+                <!-- Research topics will be dynamically inserted here -->
+            </div>
         </div>
     </div>
     <script src="researchTopics.js"></script>

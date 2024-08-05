@@ -1,113 +1,38 @@
-// Ensure the researchTopics array is included from researchTopics.js
-let availableResearchPoints = 0;
-let selectedResearch = [];
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('academy-level').addEventListener('input', calculateResearchPoints);
-    document.getElementById('academy-level').value = 1; // Set default level to 1
-    calculateResearchPoints();
-});
-
-function increaseLevel() {
-    const academyLevelInput = document.getElementById('academy-level');
-    let academyLevel = parseInt(academyLevelInput.value);
-    if (academyLevel < 37) {
-        academyLevel++;
-        academyLevelInput.value = academyLevel;
-        calculateResearchPoints();
-    }
-}
-
-function decreaseLevel() {
-    const academyLevelInput = document.getElementById('academy-level');
-    let academyLevel = parseInt(academyLevelInput.value);
-    if (academyLevel > 1) {
-        academyLevel--;
-        academyLevelInput.value = academyLevel;
-        calculateResearchPoints();
-    }
-}
-
-function calculateResearchPoints() {
-    const academyLevel = parseInt(document.getElementById('academy-level').value);
-    const totalResearchPoints = academyLevel * 4;
-    
-    // Calculate used research points
-    const usedResearchPoints = selectedResearch.reduce((sum, id) => {
-        const topic = researchTopics.find(t => t.id === id);
-        return sum + (topic ? topic.cost : 0);
-    }, 0);
-
-    availableResearchPoints = totalResearchPoints - usedResearchPoints;
-    document.getElementById('research-points').textContent = availableResearchPoints;
-
-    updateResearchTopics(academyLevel);
-    updateSelectedResearch();
-}
-
-function updateResearchTopics(level) {
-    const topicsContainer = document.querySelector('.research-grid');
-    if (!topicsContainer) {
-        console.error("Error: .research-grid element not found");
-        return;
-    }
-    topicsContainer.innerHTML = '';
-
-    for (let i = 1; i <= level; i += 3) {
-        const levelContainer = document.createElement('div');
-        levelContainer.classList.add('level-container');
-
-        researchTopics.forEach(topic => {
-            if (topic.level === i || topic.level === i + 1 || topic.level === i + 2) {
-                const topicDiv = document.createElement('div');
-                topicDiv.classList.add('research-item');
-                topicDiv.textContent = `${topic.name} (${topic.cost})`;
-                topicDiv.onclick = () => selectResearch(topic.id);
-                if (selectedResearch.includes(topic.id)) {
-                    topicDiv.classList.add('selected');
-                }
-                const tooltip = document.createElement('span');
-                tooltip.classList.add('tooltip');
-                tooltip.textContent = topic.description;
-                topicDiv.appendChild(tooltip);
-
-                levelContainer.appendChild(topicDiv);
-            }
-        });
-
-        if (levelContainer.childElementCount > 0) {
-            topicsContainer.appendChild(levelContainer);
-        }
-    }
-}
-
-function selectResearch(id) {
-    const topic = researchTopics.find(t => t.id === id);
-
-    if (availableResearchPoints >= topic.cost && !selectedResearch.includes(id)) {
-        availableResearchPoints -= topic.cost;
-        selectedResearch.push(id);
-    } else if (selectedResearch.includes(id)) {
-        availableResearchPoints += topic.cost;
-        selectedResearch = selectedResearch.filter(tid => tid !== id);
-    }
-
-    document.getElementById('research-points').textContent = availableResearchPoints;
-    updateResearchTopics(parseInt(document.getElementById('academy-level').value));
-    updateSelectedResearch();
-}
-
-function updateSelectedResearch() {
-    const selectedResearchNames = selectedResearch.map(id => {
-        const topic = researchTopics.find(t => t.id === id);
-        return topic.name;
-    });
-
-    document.getElementById('selected-research').textContent = selectedResearchNames.join(', ') || 'None';
-}
-
-function resetAll() {
-    document.getElementById('academy-level').value = 1;
-    selectedResearch = [];
-    calculateResearchPoints();
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grepolis Academy Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>Grepolis Academy Simulator</h1>
+            <div class="controls">
+                <label for="academy-level">Academy Level:</label>
+                <div class="level-controls">
+                    <button onclick="decreaseLevel()">-</button>
+                    <input type="number" id="academy-level" value="1" min="1" max="37">
+                    <button onclick="increaseLevel()">+</button>
+                    <button class="reset-button" onclick="resetAll()">Reset</button> <!-- Add Reset button -->
+                </div>
+                <button onclick="calculateResearchPoints()">Calculate Research Points</button>
+                <p>Total Research Points: <span id="research-points">0</span></p>
+            </div>
+            <div class="selected-research">
+                <h2>Selected Research</h2>
+                <p id="selected-research">None</p>
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="research-grid">
+                <!-- Research topics will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+    <script src="researchTopics.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

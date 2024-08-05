@@ -42,6 +42,12 @@ h1 {
     gap: 10px;
 }
 
+.level-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .controls label {
     font-size: 1.1em;
     color: #555;
@@ -50,9 +56,11 @@ h1 {
 .controls input {
     padding: 5px;
     font-size: 1em;
+    width: 60px;
+    text-align: center;
 }
 
-.controls button {
+.controls button, .level-controls button {
     padding: 8px 15px;
     font-size: 1em;
     cursor: pointer;
@@ -60,6 +68,11 @@ h1 {
     border-radius: 5px;
     background-color: #4CAF50;
     color: white;
+}
+
+.level-controls button {
+    padding: 5px 10px;
+    font-size: 1em;
 }
 
 .research-grid {

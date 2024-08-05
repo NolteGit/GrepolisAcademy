@@ -57,6 +57,10 @@ function calculateResearchPoints() {
 
 function updateResearchTopics(level) {
     const topicsContainer = document.querySelector('.research-grid');
+    if (!topicsContainer) {
+        console.error("Error: .research-grid element not found");
+        return;
+    }
     topicsContainer.innerHTML = '';
 
     researchTopics.forEach(topic => {

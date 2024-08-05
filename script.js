@@ -1,10 +1,8 @@
-// Make sure to include the researchTopics array from researchTopics.js
-
+// Ensure the researchTopics array is included from researchTopics.js
 let availableResearchPoints = 0;
 let selectedResearch = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('academy-level').addEventListener('input', calculateResearchPoints);
     calculateResearchPoints();
 });
 
@@ -43,14 +41,13 @@ function selectResearch(id) {
     if (availableResearchPoints >= topic.cost && !selectedResearch.includes(id)) {
         availableResearchPoints -= topic.cost;
         selectedResearch.push(id);
-        updateSelectedResearch();
     } else if (selectedResearch.includes(id)) {
         availableResearchPoints += topic.cost;
         selectedResearch = selectedResearch.filter(tid => tid !== id);
-        updateSelectedResearch();
     }
 
     document.getElementById('research-points').textContent = availableResearchPoints;
+    updateSelectedResearch();
 }
 
 function updateSelectedResearch() {

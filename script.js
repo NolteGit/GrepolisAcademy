@@ -3,6 +3,7 @@ let availableResearchPoints = 0;
 let selectedResearch = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('academy-level').addEventListener('input', calculateResearchPoints);
     calculateResearchPoints();
 });
 

@@ -105,3 +105,9 @@ function updateSelectedResearch() {
 
     document.getElementById('selected-research').textContent = selectedResearchNames.join(', ') || 'None';
 }
+
+function resetAll() {
+    document.getElementById('academy-level').value = 1;
+    selectedResearch = [];
+    calculateResearchPoints();
+}

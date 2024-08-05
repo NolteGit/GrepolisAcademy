@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grepolis Academy Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Grepolis Academy Simulator</h1>
+        <label for="academy-level">Academy Level:</label>
+        <input type="number" id="academy-level" value="1" min="1" max="37">
+        <button onclick="calculateResearchPoints()">Calculate Research Points</button>
+        <p>Total Research Points: <span id="research-points">0</span></p>
+
+        <h2>Research Topics</h2>
+        <div id="research-topics"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -10,8 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function calculateResearchPoints() {
     const academyLevel = parseInt(document.getElementById('academy-level').value);
-    availableResearchPoints = academyLevel * 4;
+    const totalResearchPoints = academyLevel * 4;
+    
+    // Calculate used research points
+    const usedResearchPoints = selectedResearch.reduce((sum, id) => {
+        const topic = researchTopics.find(t => t.id === id);
+        return sum + (topic ? topic.cost : 0);
+    }, 0);
+
+    availableResearchPoints = totalResearchPoints - usedResearchPoints;
     document.getElementById('research-points').textContent = availableResearchPoints;
+
     updateResearchTopics(academyLevel);
     updateSelectedResearch();
 }
@@ -24,30 +33,18 @@ function updateResearchTopics(level) {
     }
     topicsContainer.innerHTML = '';
 
-    let currentLevel = 1;
-    while (currentLevel <= level) {
-        const levelContainer = document.createElement('div');
-        levelContainer.classList.add('level-container');
-
-        researchTopics.forEach(topic => {
-            if (topic.level === currentLevel) {
-                const topicDiv = document.createElement('div');
-                topicDiv.classList.add('research-item');
-                topicDiv.textContent = `${topic.name} (${topic.cost})`;
-                topicDiv.onclick = () => selectResearch(topic.id);
-                if (selectedResearch.includes(topic.id)) {
-                    topicDiv.classList.add('selected');
-                }
-                levelContainer.appendChild(topicDiv);
+    researchTopics.forEach(topic => {
+        if (topic.level <= level) {
+            const topicDiv = document.createElement('div');
+            topicDiv.classList.add('research-item');
+            topicDiv.textContent = `${topic.name} (${topic.cost})`;
+            topicDiv.onclick = () => selectResearch(topic.id);
+            if (selectedResearch.includes(topic.id)) {
+                topicDiv.classList.add('selected');
             }
-        });
-
-        if (levelContainer.childElementCount > 0) {
-            topicsContainer.appendChild(levelContainer);
+            topicsContainer.appendChild(topicDiv);
         }
-        
-        currentLevel += 3; // Move to the next level that unlocks new research topics
-    }
+    });
 }
 
 function selectResearch(id) {

@@ -79,6 +79,10 @@ h1 {
     font-size: 1em;
 }
 
+.level-controls .reset-button {
+    background-color: #FF6347; /* Different color for the reset button */
+}
+
 .research-grid {
     display: flex;
     flex-direction: column;
@@ -126,7 +130,7 @@ h1 {
     z-index: 1;
     bottom: 125%; /* Position above the button */
     left: 50%;
-    margin-left: -60px;
+    margin-left: -90px;
     width: 180px;
     opacity: 0;
     transition: opacity 0.3s;

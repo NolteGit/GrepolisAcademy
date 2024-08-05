@@ -37,15 +37,9 @@ button {
 
 .research-grid {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.level-container {
-    display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .research-item {

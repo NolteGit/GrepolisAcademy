@@ -1,3 +1,8 @@
+// Make sure to include the researchTopics array from researchTopics.js
+
+let availableResearchPoints = 0;
+let selectedResearch = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('academy-level').addEventListener('input', calculateResearchPoints);
     calculateResearchPoints();

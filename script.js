@@ -33,18 +33,27 @@ function updateResearchTopics(level) {
     }
     topicsContainer.innerHTML = '';
 
-    researchTopics.forEach(topic => {
-        if (topic.level <= level) {
-            const topicDiv = document.createElement('div');
-            topicDiv.classList.add('research-item');
-            topicDiv.textContent = `${topic.name} (${topic.cost})`;
-            topicDiv.onclick = () => selectResearch(topic.id);
-            if (selectedResearch.includes(topic.id)) {
-                topicDiv.classList.add('selected');
+    for (let i = 1; i <= level; i += 3) {
+        const levelContainer = document.createElement('div');
+        levelContainer.classList.add('level-container');
+
+        researchTopics.forEach(topic => {
+            if (topic.level === i || topic.level === i + 1 || topic.level === i + 2) {
+                const topicDiv = document.createElement('div');
+                topicDiv.classList.add('research-item');
+                topicDiv.textContent = `${topic.name} (${topic.cost})`;
+                topicDiv.onclick = () => selectResearch(topic.id);
+                if (selectedResearch.includes(topic.id)) {
+                    topicDiv.classList.add('selected');
+                }
+                levelContainer.appendChild(topicDiv);
             }
-            topicsContainer.appendChild(topicDiv);
+        });
+
+        if (levelContainer.childElementCount > 0) {
+            topicsContainer.appendChild(levelContainer);
         }
-    });
+    }
 }
 
 function selectResearch(id) {

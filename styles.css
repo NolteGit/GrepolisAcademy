@@ -24,6 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center; /* Center align the left panel */
 }
 
 .right-panel {
@@ -38,12 +39,14 @@ h1 {
     margin-bottom: 20px;
     font-size: 2em;
     color: #333;
+    text-align: center;
 }
 
 .controls {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center; /* Center align the controls */
 }
 
 .level-controls {
@@ -72,6 +75,7 @@ h1 {
     border-radius: 5px;
     background-color: #4CAF50;
     color: white;
+    transition: background-color 0.3s;
 }
 
 .level-controls button {
@@ -81,6 +85,14 @@ h1 {
 
 .level-controls .reset-button {
     background-color: #FF6347; /* Different color for the reset button */
+}
+
+.controls button:hover, .level-controls button:hover {
+    background-color: #45a049;
+}
+
+.level-controls .reset-button:hover {
+    background-color: #FF4500;
 }
 
 .research-grid {
@@ -142,7 +154,7 @@ h1 {
 }
 
 .selected-research {
-    text-align: left;
+    text-align: center; /* Center align the selected research text */
     margin-top: 20px;
     font-size: 1.1em;
 }
@@ -150,6 +162,7 @@ h1 {
 .selected-research h2 {
     font-size: 1.5em;
     color: #333;
+    text-align: center;
 }
 
 .selected-research p {

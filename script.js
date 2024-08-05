@@ -8,6 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateResearchPoints();
 });
 
+function increaseLevel() {
+    const academyLevelInput = document.getElementById('academy-level');
+    let academyLevel = parseInt(academyLevelInput.value);
+    if (academyLevel < 37) {
+        academyLevel++;
+        academyLevelInput.value = academyLevel;
+        calculateResearchPoints();
+    }
+}
+
+function decreaseLevel() {
+    const academyLevelInput = document.getElementById('academy-level');
+    let academyLevel = parseInt(academyLevelInput.value);
+    if (academyLevel > 1) {
+        academyLevel--;
+        academyLevelInput.value = academyLevel;
+        calculateResearchPoints();
+    }
+}
+
 function calculateResearchPoints() {
     const academyLevel = parseInt(document.getElementById('academy-level').value);
     const totalResearchPoints = academyLevel * 4;

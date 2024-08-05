@@ -49,7 +49,6 @@ const researchTopics = [
     { id: 31, level: 25, name: "Mathematik", description: "Durch die Entwicklung der Mathematik können die Rohstoffkosten für Schiffe um 10% gesenkt werden.", cost: 6 },
 
     // Level 28
-    { id: 32, level: 28, name: "Eroberung", description: "Ermöglicht das Erobern feindlicher Städte (nur auf Welten mit dem Eroberungssystem Belagerung).", cost: 0 },
     { id: 33, level: 28, name: "Revolte", description: "Ermöglicht das Erobern feindlicher Städte (nur auf Welten mit dem Eroberungssystem Revolte).", cost: 0 },
     { id: 34, level: 28, name: "Rammbock", description: "Die Kampfkraft deiner Schiffe erhöht sich um 10%.", cost: 10 },
     { id: 35, level: 28, name: "Kartographie", description: "Durch die Entwicklung der Kartographie können deine Schiffe besser navigieren und sind 10% schneller.", cost: 8 },

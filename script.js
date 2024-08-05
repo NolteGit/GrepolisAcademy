@@ -75,24 +75,4 @@ function updateResearchTopics(level) {
 function selectResearch(id) {
     const topic = researchTopics.find(t => t.id === id);
 
-    if (availableResearchPoints >= topic.cost && !selectedResearch.includes(id)) {
-        availableResearchPoints -= topic.cost;
-        selectedResearch.push(id);
-        updateSelectedResearch();
-    } else if (selectedResearch.includes(id)) {
-        availableResearchPoints += topic.cost;
-        selectedResearch = selectedResearch.filter(tid => tid !== id);
-        updateSelectedResearch();
-    }
-
-    document.getElementById('research-points').textContent = availableResearchPoints;
-}
-
-function updateSelectedResearch() {
-    const selectedResearchNames = selectedResearch.map(id => {
-        const topic = researchTopics.find(t => t.id === id);
-        return topic.name;
-    });
-
-    document.getElementById('selected-research').textContent = selectedResearchNames.join(', ') || 'None';
-}
+    if (availableResearchPoints >= topic.cost && !
